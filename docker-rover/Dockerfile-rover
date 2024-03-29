@@ -8,7 +8,7 @@ ARG ROVER_REPO_SOFTWARE_NAME=rover-software
 ARG ROVER_REPO_HARDWARE_NAME=aau-rover-hardware
 ARG BASE_FOLDER=/home/orin/
 ARG ROS_WORKSPACE_NAME=ros_ws
-
+ARG ROS_DISTRO=humble
 
 # Install utils
 RUN apt-get update && apt-get install nano && apt-get install iputils-ping
