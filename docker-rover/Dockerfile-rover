@@ -27,6 +27,7 @@ RUN pip3 install onnx
 RUN pip3 install canopen
 RUN pip3 install numpy --upgrade
 RUN pip3 install protobuf requests
+RUN pip3 install -U colcon-common-extensions
 #RUN pip3 install pyrealsense2
 
 # Install the ZED SDK
