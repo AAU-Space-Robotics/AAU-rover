@@ -69,14 +69,14 @@ RUN apt-get update -y || true && rosdep init && rosdep update && \
     rosdep install --from-paths src --ignore-src -r -y 
 
 # Build workspace
-RUN /bin/bash -c "source /opt/ros/humble/setup.bash"
-#&& \
-   # colcon build --symlink-install --parallel-workers $(nproc) \
-   # --event-handlers console_direct+ --base-paths src \
-   # --cmake-args ' -DCMAKE_BUILD_TYPE=Release' \
-  #  ' -DCMAKE_LIBRARY_PATH=/usr/local/cuda/lib64/stubs' \
-  #  ' -DCMAKE_CXX_FLAGS="-Wl,--allow-shlib-undefined"' \
- #   ' --no-warn-unused-cli' "
+RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && \
+  apt-get update -y || true && \
+  rosdep install --from-paths src --ignore-src -r -y && \
+  colcon build --parallel-workers $(nproc) --symlink-install \
+  --event-handlers console_direct+ --base-paths src \
+  --cmake-args ' -DCMAKE_BUILD_TYPE=Release' \
+  ' -DCMAKE_LIBRARY_PATH=/usr/local/cuda/lib64/stubs' \
+  ' -DCMAKE_CXX_FLAGS="-Wl,--allow-shlib-undefined"' "
 
 
 # Source ROS 2 on startup
