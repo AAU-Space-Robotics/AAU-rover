@@ -1,0 +1,17 @@
+# Base image
+FROM osrf/ros:humble-desktop-full
+
+# Install dependencies
+
+# Install ros packages
+
+# Clone the rover repository into the container
+
+# Build the rover repository
+
+
+# Copy the entrypoint script into the container
+COPY entrypoint.sh /entrypoint.sh
+
+# Set the entrypoint script as the entry point for the container
+ENTRYPOINT ["/entrypoint.sh"]
